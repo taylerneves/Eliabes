@@ -108,6 +108,76 @@
   window.addEventListener("scroll", updateTimeline, { passive: true });
   updateTimeline();
 
+  /* ---------- Depoimentos extensos: modal ---------- */
+  var tributeTexts = document.querySelectorAll(".tribute__text");
+  tributeTexts.forEach(function (text) {
+    if (text.offsetHeight <= 220) return;
+
+    text.classList.add("is-collapsed");
+
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "tribute__toggle";
+    button.textContent = "Ler mais";
+
+    text.insertAdjacentElement("afterend", button);
+    button.addEventListener("click", function () {
+      openTributeModal(text);
+    });
+  });
+
+  var modal = null;
+  var previousFocus = null;
+
+  function openTributeModal(text) {
+    previousFocus = document.activeElement;
+    modal = document.createElement("div");
+    modal.className = "tribute-modal";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-label", "Depoimento completo");
+
+    var card = text.closest(".tribute");
+    var name = card ? card.querySelector("h3") : null;
+    var title = name ? name.textContent : "Depoimento";
+
+    modal.innerHTML =
+      '<div class="tribute-modal__dialog">' +
+        '<button class="tribute-modal__close" type="button" aria-label="Fechar depoimento">&times;</button>' +
+        '<h3 class="tribute-modal__title">' + title + '</h3>' +
+        '<blockquote class="tribute-modal__text"></blockquote>' +
+      '</div>';
+
+    modal.querySelector(".tribute-modal__text").textContent = text.textContent.trim();
+    document.body.appendChild(modal);
+    document.body.classList.add("modal-open");
+
+    requestAnimationFrame(function () { modal.classList.add("is-open"); });
+
+    var closeButton = modal.querySelector(".tribute-modal__close");
+    closeButton.addEventListener("click", closeTributeModal);
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) closeTributeModal();
+    });
+    closeButton.focus();
+  }
+
+  function closeTributeModal() {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+    var elementToRemove = modal;
+    modal = null;
+    setTimeout(function () {
+      elementToRemove.remove();
+      if (previousFocus) previousFocus.focus();
+    }, 250);
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal) closeTributeModal();
+  });
+
   /* ---------- Menu mobile ---------- */
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
