@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eliabes Neves — Procurador do Estado de Rondônia</title>
+  <meta name="description" content="Biografia de Eliabes Neves: filho de José e Neyde, procurador do Estado de Rondônia, professor e conselheiro da OAB/RO. Uma homenagem à sua trajetória.">
+  <meta name="theme-color" content="#16181b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#inicio">Eliabes Neves</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu"><span></span><span></span></button>
+  <nav class="nav__links" id="navLinks">
+    <a href="#origem">Origem</a>
+    <a href="#trajetoria">Trajetória</a>
+    <a href="#advocacia">Advocacia pública</a>
+    <a href="#sala">Sala de aula</a>
+    <a href="#casa">Homenagens</a>
+  </nav>
+</header>
+
+<!-- HERO: vídeo controlado pela rolagem (10 s) e, no final, o retrato em PNG -->
+<section class="hero" id="inicio" aria-label="Abertura">
+  <div class="stage">
+    <video id="heroVideo" class="stage__video" muted playsinline preload="auto" poster="assets/img/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="stage__shade"></div>
+
+    <div class="intro">
+      <p class="intro__name">Eliabes Neves</p>
+      <p class="intro__hint">Role para conhecer a história</p>
+      <span class="intro__line" aria-hidden="true"></span>
+    </div>
+
+    <div class="final">
+      <div class="final__text">
+        <p class="final__kicker">Procurador do Estado de Rondônia</p>
+        <h1 class="final__title">Eliabes Neves</h1>
+        <p class="final__sub">Filho de José e de Neyde. Menino de Rolim de Moura que acreditou que a justiça e a educação podem mudar o mundo.</p>
+      </div>
+      <img class="final__img" src="assets/img/eliabes.png" alt="Retrato de Eliabes Neves sorrindo, com os braços cruzados" width="332" height="432">
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- ORIGEM -->
+  <section class="section section--paper" id="origem">
+    <div class="wrap origin">
+      <div class="origin__text">
+        <h2 class="reveal">Tudo começou com José e Neyde</h2>
+        <p class="lead reveal">Antes da toga, da sala de aula e dos títulos, Eliabes é filho de José e de Neyde.</p>
+        <p class="reveal">Nascido em Mato Grosso do Sul, chegou a Rondônia ainda criança. Foi em Rolim de Moura que formou as primeiras memórias da vida, e também os sonhos que o levariam a uma carreira voltada à transformação social.</p>
+        <p class="reveal">Esta página é, antes de tudo, uma homenagem a quem lhe deu o chão, o nome e a coragem de sonhar alto: o pai, José Neves, e a mãe, Neyde.</p>
+      </div>
+      <div class="origin__photos">
+        <figure class="arch arch--tall reveal-arch">
+          <img src="assets/img/jose-neves.jpg" alt="José Neves, pai de Eliabes, de boné azul, tomando um café" loading="lazy">
+          <figcaption>José Neves, o pai</figcaption>
+        </figure>
+
+        <!-- FOTO DA NEYDE: salve a imagem como assets/img/neyde.jpg (vertical, de preferência 900x1300 ou maior).
+             Enquanto o arquivo não existir, aparece um espaço reservado. -->
+        <figure class="arch arch--tall arch--low reveal-arch" id="neydeFigure">
+          <img src="assets/img/Neyde.jpg" alt="Neyde, mãe de Eliabes" loading="lazy" onerror="this.closest('figure').classList.add('is-empty')">
+          <div class="arch__empty" aria-hidden="true"><span>Foto da Neyde</span></div>
+          <figcaption>Neyde, a mãe</figcaption>
+        </figure>
+
+        <figure class="frame frame--child reveal-arch">
+          <img src="assets/img/crianca.jpg" alt="Eliabes ainda criança, de mãos entrelaçadas diante de uma cerca de madeira" loading="lazy">
+          <figcaption>Eliabes, ainda menino</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <blockquote class="quote quote--big reveal">
+        <p>Hoje, aquele garoto que queria mudar o mundo acredita firmemente que a educação é capaz de mudar as pessoas.</p>
+        <cite>Eliabes Neves</cite>
+      </blockquote>
+    </div>
+
+    <div class="wrap pair">
+      <figure class="frame reveal-arch">
+        <img src="assets/img/familia-aniversario.jpg" alt="Eliabes e a família ao redor de um bolo de aniversário, sorrindo" loading="lazy">
+        <figcaption>Celebrando em família</figcaption>
+      </figure>
+      <p class="pair__text reveal">Do menino de Rolim de Moura ao homem que hoje defende o interesse público, uma coisa não mudou: a família continua sendo o lugar onde tudo faz sentido.</p>
+    </div>
+  </section>
+
+  <!-- TRAJETÓRIA -->
+  <section class="section section--dark" id="trajetoria">
+    <div class="wrap">
+      <h2 class="reveal">Uma trajetória construída passo a passo</h2>
+      <p class="lead lead--light reveal">Da literatura ao direito, da graduação ao doutorado: uma vida de estudo e serviço.</p>
+      <p class="reveal">Depois de concluir Letras, Eliabes atuou como professor em Nova Brasilândia e, ao mesmo tempo, cursou Direito na UNIR, em Cacoal. Filho de uma família humilde, construiu sua trajetória com estudo, trabalho e compromisso com as pessoas — até se tornar uma referência na advocacia pública em Rondônia.</p>
+
+      <ol class="timeline" id="timeline">
+        <li class="reveal">
+          <span class="timeline__year">2000</span>
+          <div><h3>Letras na UNIR</h3><p>Começa pela literatura, buscando entender como fazer a diferença no mundo. Graduação concluída em 2003 pela Universidade Federal de Rondônia.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">2002</span>
+          <div><h3>Direito na UNIR</h3><p>Ingressa no curso de Direito e se encanta com a advocacia pública. Conclui em 2007 com um trabalho sobre o pregão eletrônico como modalidade de licitação.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">2008</span>
+          <div><h3>Direito Civil e Processual Civil</h3><p>Especialização na Faculdade Rolim de Moura (FAROL), com estudo sobre a coisa julgada inconstitucional.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">2014</span>
+          <div><h3>Posse como Procurador do Estado</h3><p>Em 10 de abril, toma posse na Procuradoria-Geral do Estado de Rondônia (PGE-RO). No mesmo ano, passa a lecionar Direito na FAROL, onde é professor titular.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">2020</span>
+          <div><h3>Mestrado em Ciência Jurídica</h3><p>Pela UNIVALI (SC), pesquisa o fornecimento de medicamentos pelo Estado e os direitos fundamentais, com dados do município de Rolim de Moura. Defesa em 2022.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">2021</span>
+          <div><h3>Especialização em Direito Público</h3><p>Estuda a responsabilidade civil do Estado por leis declaradas inconstitucionais.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">2023</span>
+          <div><h3>Doutorado em andamento</h3><p>Na UNIVALI, investiga a contratação pública no direito transnacional e um regime de contratação baseado em critérios de sustentabilidade no âmbito do Mercosul. Integra também o corpo editorial da Revista FAROL.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__year">Hoje</span>
+          <div><h3>Conselheiro Seccional da OAB/RO</h3><p>Segue na PGE-RO, em Rolim de Moura, na sala de aula e na representação da advocacia rondoniense.</p></div>
+        </li>
+      </ol>
+
+      <div class="duo">
+        <figure class="frame reveal-arch">
+          <img src="assets/img/palestra.jpg" alt="Eliabes Neves falando ao microfone em um púlpito de madeira" loading="lazy">
+          <figcaption>Na tribuna</figcaption>
+        </figure>
+        <figure class="frame reveal-arch">
+          <img src="assets/img/oab.jpg" alt="Eliabes Neves à mesa de uma sessão da OAB, com notebook e caneta na mão" loading="lazy" style="object-position: center top;"">>
+          <figcaption>Na sessão do Conselho da OAB/RO</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVOCACIA PÚBLICA -->
+  <section class="section section--paper" id="advocacia">
+    <div class="wrap narrow">
+      <h2 class="reveal">A advocacia pública, em suas palavras</h2>
+      <p class="reveal">Para Eliabes, da merenda escolar às grandes obras de infraestrutura, todo projeto passou um dia pelas mãos de um advogado público.</p>
+
+      <blockquote class="quote reveal">
+        <p>Ela representa a função que auxilia o gestor público a realizar políticas públicas que terão um impacto direto na vida do cidadão.</p>
+        <cite>Eliabes Neves, sobre a advocacia pública</cite>
+      </blockquote>
+
+      <p class="reveal">Na PGE-RO, as atribuições vão da consultoria jurídica às ações de governo até a defesa do Estado em juízo, passando pela gestão do patrimônio público e pela cobrança da dívida ativa.</p>
+
+      <blockquote class="quote reveal">
+        <p>Ela assegura que as políticas públicas sejam executadas dentro dos parâmetros legais e protege o interesse público.</p>
+        <cite>Eliabes Neves</cite>
+      </blockquote>
+
+      <h3 class="reveal">Vitórias que chegam à vida das pessoas</h3>
+      <ul class="deeds">
+        <li class="reveal"><strong>Medicamentos.</strong> Ressarcimento ao Estado por medicamentos distribuídos que eram de responsabilidade da União, preservando o erário.</li>
+        <li class="reveal"><strong>Servidores transpostos.</strong> Conquista judicial para que Rondônia fosse ressarcida pelas despesas com servidores transpostos para os quadros da União, um alívio de cerca de trezentos milhões de reais por ano.</li>
+        <li class="reveal"><strong>Dívida ativa.</strong> Aumento expressivo da arrecadação, fortalecendo recursos para educação, saúde e infraestrutura.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SALA DE AULA -->
+  <section class="section section--sand" id="sala">
+    <div class="wrap class">
+      <figure class="arch arch--tall reveal-arch">
+        <img src="assets/img/retrato.jpg" alt="Retrato de Eliabes Neves de camiseta branca, sorrindo" loading="lazy">
+      </figure>
+      <div class="class__text">
+        <h2 class="reveal">Professor, pesquisador, autor</h2>
+        <p class="reveal">Desde 2014, Eliabes é professor titular do curso de Direito da Faculdade de Rolim de Moura (FAROL), onde leciona Direito Constitucional, Processual Civil, Direitos Coletivos, Direito Eleitoral e Introdução ao Estudo do Direito. Também atua na especialização em Direito Civil e Processual Civil.</p>
+        <p class="reveal">Sua produção acadêmica passa por contratações públicas, sustentabilidade, direitos fundamentais e políticas de saúde. Alguns títulos:</p>
+        <ul class="papers reveal">
+          <li>A sustentabilidade como referência para as contratações públicas: um poder-dever da administração à luz da Lei 14.133/21 (2024)</li>
+          <li>Transnacionalidade e as contratações públicas: um olhar sobre o MERCOSUL (2024)</li>
+          <li>Uma análise sobre a evolução dos direitos fundamentais (2023)</li>
+          <li>A responsabilidade civil do Estado por leis declaradas inconstitucionais (2021)</li>
+        </ul>
+        <a class="btn reveal" href="http://lattes.cnpq.br/0515407110462808" target="_blank" rel="noopener">Ver currículo completo na Plataforma Lattes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOMENAGENS DA FAMÍLIA: para acrescentar alguém, duplique um article .tribute e troque nome, foto e depoimento. -->
+  <section class="section section--paper" id="casa">
+    <div class="wrap narrow center">
+      <h2 class="reveal">Homenagens de quem o ama</h2>
+      <p class="reveal">Palavras da família para Eliabes, presença que une, acolhe e inspira.</p>
+    </div>
+    <div class="wrap tributes">
+      <article class="tribute reveal">
+        <div class="tribute__photo">
+          <img src="assets/img/Aline Neves.jpg" alt="Aline Neves com Eliabes" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+          <span class="tribute__placeholder" aria-hidden="true">Foto de Aline Neves</span>
+        </div>
+        <div class="tribute__body">
+          <h3>Aline Neves</h3>
+          <p class="tribute__pending">Depoimento em breve.</p>
+        </div>
+      </article>
+
+      <article class="tribute reveal">
+        <div class="tribute__photo">
+          <img src="assets/img/Thuany Neves.jpg" alt="Thuany Neves Polletti com Eliabes" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+          <span class="tribute__placeholder" aria-hidden="true">Foto de Thuany Neves Polletti</span>
+        </div>
+        <div class="tribute__body">
+          <h3>Thuany Neves Polletti</h3>
+          <p class="tribute__pending">Depoimento em breve.</p>
+        </div>
+      </article>
+
+      <article class="tribute reveal">
+        <div class="tribute__photo">
+          <img src="assets/img/Tayler.jpg" alt="Tayler Neves Polletti ao lado de Eliabes" loading="lazy" onerror="this.parentElement.classList.add('is-empty')">
+          <span class="tribute__placeholder" aria-hidden="true">Foto de Tayler Neves Polletti</span>
+        </div>
+        <div class="tribute__body">
+          <h3>Tayler Neves Polletti</h3>
+          <blockquote>“O Eliabes é muito mais do que um tio incrível: ele é uma pessoa maravilhosa e o centro da nossa família. Ele está sempre pronto para apoiar a gente a qualquer momento. Às vezes, dá aquelas puxadas de orelha necessárias, mas sempre com o coração bom e a melhor intenção. É impressionante a capacidade que ele tem de manter toda a família unida! É sempre bom poder ter você por perto.”</blockquote>
+        </div>
+      </article>
+    </div>
+    <div class="wrap casa__memories">
+      <h3 class="reveal">Momentos em família</h3>
+      <div class="casa__photos">
+        <figure class="frame frame--wide reveal-arch">
+          <img src="assets/img/cachorros.jpg" alt="Eliabes cercado pelos quatro cachorros em casa" loading="lazy">
+          <figcaption>Melisa, John, Jobs e Mafalda</figcaption>
+        </figure>
+        <figure class="frame frame--wide reveal-arch">
+          <img src="assets/img/familia-varanda.jpg" alt="Eliabes reunido com a família na varanda" loading="lazy">
+          <figcaption>A família reunida</figcaption>
+        </figure>
+        <figure class="frame frame--wide reveal-arch">
+          <img src="assets/img/PaisdoEliabes.jpg" alt="José e Neyde" loading="lazy"style="object-position: center center;">
+          <figcaption>Eliabes com seus pais</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap center">
+    <p class="footer__title">Com carinho e admiração.</p>
+    <p class="footer__text">Uma homenagem a Eliabes Neves, filho de José e de Neyde.</p>
+    <div class="footer__links">
+      <a href="https://www.instagram.com/eliabesneves/" target="_blank" rel="noopener">Instagram</a>
+      <a href="http://lattes.cnpq.br/0515407110462808" target="_blank" rel="noopener">Currículo Lattes</a>
+      <a href="https://www.oab-ro.org.br/eliabes-neves-a-advocacia-publica-como-agente-de-transformacao-em-rondonia/" target="_blank" rel="noopener">Matéria da OAB/RO</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
