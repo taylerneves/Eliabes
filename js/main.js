@@ -152,6 +152,47 @@
   window.addEventListener("scroll", updateTimeline, { passive: true });
   updateTimeline();
 
+  /* ---------- Depoimentos: carrossel horizontal em loop ---------- */
+  var tributes = document.getElementById("tributes");
+  var tributeCards = tributes ? Array.prototype.slice.call(tributes.querySelectorAll(".tribute")) : [];
+  var originalTributeCards = tributeCards.slice();
+  var originalTributeCount = originalTributeCards.length;
+  var tributeLoopWidth = 0;
+  var tributePaused = false;
+  var tributeReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (tributes && originalTributeCount > 1 && !tributeReducedMotion) {
+    originalTributeCards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.classList.remove("reveal");
+      tributes.appendChild(clone);
+    });
+    tributeCards = Array.prototype.slice.call(tributes.querySelectorAll(".tribute"));
+    tributeLoopWidth = tributeCards[originalTributeCount].offsetLeft;
+  }
+
+  if (tributes) {
+    tributes.addEventListener("mouseenter", function () { tributePaused = true; });
+    tributes.addEventListener("mouseleave", function () { tributePaused = false; });
+    tributes.addEventListener("focusin", function () { tributePaused = true; });
+    tributes.addEventListener("focusout", function (event) {
+      if (!tributes.contains(event.relatedTarget)) tributePaused = false;
+    });
+
+    function animateTributes(timestamp) {
+      if (!animateTributes.lastTime) animateTributes.lastTime = timestamp;
+      var elapsed = timestamp - animateTributes.lastTime;
+      animateTributes.lastTime = timestamp;
+      if (!tributePaused && tributeLoopWidth) {
+        tributes.scrollLeft += elapsed * 0.035;
+        if (tributes.scrollLeft >= tributeLoopWidth) tributes.scrollLeft -= tributeLoopWidth;
+      }
+      window.requestAnimationFrame(animateTributes);
+    }
+
+    if (tributeLoopWidth) window.requestAnimationFrame(animateTributes);
+  }
+
   /* ---------- Depoimentos extensos: modal ---------- */
   var tributeTexts = document.querySelectorAll(".tribute__text");
   tributeTexts.forEach(function (text) {
