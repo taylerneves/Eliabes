@@ -64,7 +64,7 @@ p { margin: 0 0 1.2em; max-width: 62ch; }
 /* ============ Hero (vídeo na rolagem) ============ */
 .hero { position: relative; height: 480vh; background: var(--graphite); --intro: 1; --r: 0; --dim: .15; }
 .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-.stage__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.stage__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.002); will-change: transform; backface-visibility: hidden; }
 .stage__shade {
   position: absolute; inset: 0;
   background:

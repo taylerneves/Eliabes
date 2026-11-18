@@ -12,6 +12,8 @@
   var video = document.getElementById("heroVideo");
   var nav = document.getElementById("nav");
   var target = 0, current = 0, duration = 10, ticking = false;
+  var baseTarget = 0, momentum = 0, lastScrollProgress = -1, lastScrollTime = 0;
+  var lastFrameTime = 0, lastVideoSeek = -1;
 
   function heroProgress() {
     var h = hero.offsetHeight - window.innerHeight;
@@ -20,9 +22,23 @@
 
   function updateTarget() {
     var p = heroProgress();
+    var now = performance.now();
     // o nome fica parado sobre o primeiro quadro (até ~12%), depois o vídeo
     // percorre 0–10 s até ~85% da rolagem; o PNG entra no finalzinho
-    target = clamp((p - 0.12) / 0.73, 0, 1) * duration;
+    baseTarget = clamp((p - 0.12) / 0.73, 0, 1) * duration;
+
+    // Conserva um pouco da velocidade da rolagem: ao soltar a barra, o vídeo
+    // avança um instante curto antes de parar suavemente.
+    if (lastScrollProgress >= 0) {
+      var dt = Math.max(now - lastScrollTime, 16);
+      var velocity = (p - lastScrollProgress) / dt;
+      var extraProgress = clamp(velocity * 20, -0.018, 0.018);
+      momentum = extraProgress * duration;
+    }
+    lastScrollProgress = p;
+    lastScrollTime = now;
+
+    target = clamp(baseTarget + momentum, 0, duration);
     hero.style.setProperty("--intro", (1 - smooth(p, 0.2, 0.4)).toFixed(3));
     hero.style.setProperty("--r", smooth(p, 0.8, 0.97).toFixed(3));
     hero.style.setProperty("--dim", (p * 0.3).toFixed(3));
@@ -30,13 +46,41 @@
   }
 
   function frame() {
-    // suaviza o avanço (inércia) para a animação ficar fluida
-    current += (target - current) * 0.14;
-    if (Math.abs(target - current) < 0.003) current = target;
-    if (video && video.readyState >= 2 && Math.abs(video.currentTime - current) > 0.02) {
-      try { video.currentTime = current; } catch (e) {}
+    var now = performance.now();
+    var dt = lastFrameTime ? Math.min((now - lastFrameTime) / 1000, 0.05) : 1 / 60;
+    lastFrameTime = now;
+
+    momentum *= Math.exp(-dt * 9);
+    if (Math.abs(momentum) < 0.002) momentum = 0;
+    target = clamp(baseTarget + momentum, 0, duration);
+
+    // Suaviza a posição em relação ao tempo real da tela, não pela quantidade
+    // de frames. Isso evita pulos maiores em telas de 120 Hz ou ao voltar a rolar.
+    var inertia = 1 - Math.exp(-dt * 11);
+    current += (target - current) * inertia;
+    if (Math.abs(target - current) < 0.006) current = target;
+
+    if (video && video.readyState >= 2) {
+      var seekDifference = Math.abs(video.currentTime - current);
+      var seekInterval = seekDifference > 0.08 ? 0.032 : 0.065;
+      if (seekDifference > 0.035 && now - lastVideoSeek >= seekInterval * 1000) {
+        lastVideoSeek = now;
+        try {
+          video.currentTime = current;
+        } catch (e) {}
+      }
     }
-    if (current !== target) requestAnimationFrame(frame); else ticking = false;
+    if (Math.abs(current - target) > 0.002) requestAnimationFrame(frame);
+    else {
+      current = target;
+      if (video && video.readyState >= 2) {
+        try {
+          video.currentTime = target;
+        } catch (e) {}
+      }
+      ticking = false;
+      lastFrameTime = 0;
+    }
   }
 
   function onScroll() {
